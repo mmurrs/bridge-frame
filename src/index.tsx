@@ -88,7 +88,6 @@ app.frame('/', (c) => {
     intents: [
       <TextInput placeholder="Value (ETH)" />,
       <Button.Transaction target="/send-ether">Send Ether</Button.Transaction>,
-      <Button.Transaction target="/mint">Mint</Button.Transaction>,
     ]
   })
 })
@@ -114,18 +113,18 @@ app.transaction('/send-ether', (c) => {
   })
 })
  
-app.transaction('/mint', (c) => {
-  const { inputText } = c
-  // Contract transaction response.
-  return c.contract({
-    abi,
-    chainId: 'eip155:10',
-    functionName: 'mint',
-    args: [69420n],
-    to: '0xd2135CfB216b74109775236E36d4b433F1DF507B',
-    value: parseEther(inputText)
-  })
-})
+// app.transaction('/mint', (c) => {
+//   const { inputText } = c
+//   // Contract transaction response.
+//   return c.contract({
+//     abi,
+//     chainId: 'eip155:10',
+//     functionName: 'mint',
+//     args: [69420n],
+//     to: '0xd2135CfB216b74109775236E36d4b433F1DF507B',
+//     value: parseEther(inputText)
+//   })
+// })
 
 // Devtools for debugging
 devtools(app, { serveStatic })
